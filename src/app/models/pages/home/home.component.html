@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="search">
+    <h1>Github Profile</h1>
+    <input type="text" [(ngModel)]="name" />
+    <button (click)="getUser()">Search</button>
+  </div>
+  <div class="profile" *ngIf="user">
+    <div class="image">
+      <img [src]="user.avatar_url" alt="imagem" />
+    </div>
+    <h3 style="color: beige">{{ user.name }}</h3>
+    <div class="location">
+      <!-- <p>p</p> -->
+      <p>{{ user.location }}</p>
+    </div>
+    <div class="info">
+      <div class="info-user">
+        <p>Repositórios</p>
+        <p>{{ user.public_repos }}</p>
+      </div>
+      <div class="info-user">
+        <p>Seguidores</p>
+        <p>{{ user.followers }}</p>
+      </div>
+      <div class="info-user">
+        <p>Seguindo</p>
+        <p>{{ user.following }}</p>
+      </div>
+    </div>
+
+    <div class="button">
+      <a href="https://github/{{ user.login }}" target="_blank">
+        <button>Ir para o Github</button>
+      </a>
+    </div>
+  </div>
+</div>
