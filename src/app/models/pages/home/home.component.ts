@@ -2,16 +2,23 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { iProfile } from './interfaces/profile';
 import { ProfileService } from './services/profile.service';
 
+import { DialogService } from 'primeng/dynamicdialog';
+import { RepositorysComponent } from './components/repositorys/repositorys.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  providers: [DialogService],
 })
 export class HomeComponent implements OnInit, OnChanges {
   user!: iProfile;
   name!: string;
 
-  constructor(private profileService: ProfileService) {}
+  constructor(
+    private profileService: ProfileService,
+    private dialogService: DialogService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -29,5 +36,12 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     console.log('teste');
+  }
+
+  openModal() {
+    const ref = this.dialogService.open(RepositorysComponent, {
+      header: 'Repositórios',
+      width: '70%',
+    });
   }
 }

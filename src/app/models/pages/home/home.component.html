@@ -2,7 +2,13 @@
   <div class="search">
     <h1>Github Profile</h1>
     <input type="text" [(ngModel)]="name" />
-    <button (click)="getUser()">Search</button>
+    <button
+      pButton
+      type="button"
+      label="Search"
+      class="p-button-warning"
+      (click)="getUser()"
+    ></button>
   </div>
   <div class="profile" *ngIf="user">
     <div class="image">
@@ -10,11 +16,13 @@
     </div>
     <h3 style="color: beige">{{ user.name }}</h3>
     <div class="location">
-      <!-- <p>p</p> -->
+      <span>
+        <i class="pi pi-map-marker" style="font-size: 1rem; color: white"></i>
+      </span>
       <p>{{ user.location }}</p>
     </div>
     <div class="info">
-      <div class="info-user">
+      <div class="info-user1" (click)="openModal()">
         <p>Repositórios</p>
         <p>{{ user.public_repos }}</p>
       </div>
@@ -29,8 +37,13 @@
     </div>
 
     <div class="button">
-      <a href="https://github/{{ user.login }}" target="_blank">
-        <button>Ir para o Github</button>
+      <a href="https://www.github.com/{{ user.login }}" target="_blank">
+        <button
+          pButton
+          type="button"
+          label="Ir para o Github"
+          class="p-button-warning"
+        ></button>
       </a>
     </div>
   </div>
